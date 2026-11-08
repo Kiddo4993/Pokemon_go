@@ -4,25 +4,53 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pokémon Explorer</title>
+    <meta name="description" content="Catch a random Pokémon from the original 151 and fill in your Pokédex." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;600;800&display=swap" />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="container">
-      <h1>Pokémon Explorer</h1>
+    <main>
+      <header class="top">
+        <h1>Pokémon Explorer</h1>
+        <p class="count" id="count">Caught 0 of 151</p>
+      </header>
 
-      <div id="pokemon-card" class="card">
-        <h2 id="pokemon-name">???</h2>
-        <p id="pokemon-types">Type: ???</p>
-      </div>
-      <div id="pokemon-image" class="card">
-        <img id="pokemon-img" src="" alt="Pokémon Image" />
-      </div>
-      <div id="shiny-image" class="card">
-        <img id="shiny-img" src="" alt="Shiny Pokémon Image" />
-      </div>
+      <section class="plate" id="plate" aria-live="polite">
+        <div class="empty" id="empty">
+          <p>Press <b>Catch a Pokémon</b> to find one of the original 151.</p>
+        </div>
+        <div class="entry" id="entry" hidden>
+          <p class="dex" id="dex">#000</p>
+          <h2 id="pokemon-name">Name</h2>
+          <ul class="types" id="pokemon-types"></ul>
+          <div class="sprites">
+            <figure>
+              <img id="pokemon-img" alt="" width="96" height="96" />
+              <figcaption>Normal</figcaption>
+            </figure>
+            <figure>
+              <img id="shiny-img" alt="" width="96" height="96" />
+              <figcaption><span aria-hidden="true">✦ </span>Shiny</figcaption>
+            </figure>
+          </div>
+        </div>
+        <p class="error" id="error" role="alert" hidden></p>
+      </section>
 
-      <button id="catch-btn">Catch Pokémon</button>
-    </div>
+      <button id="catch-btn" type="button">Catch a Pokémon</button>
+
+      <section class="dex-grid-wrap">
+        <div class="dex-head">
+          <h2>Your Pokédex</h2>
+          <button id="reset-btn" class="quiet" type="button" hidden>Start over</button>
+        </div>
+        <ol class="dex-grid" id="dex-grid" aria-label="Pokédex, numbers 1 to 151"></ol>
+      </section>
+
+      <footer>Data and sprites from <a href="https://pokeapi.co">PokéAPI</a>. Pokémon is © Nintendo, Game Freak and Creatures. A fan project.</footer>
+    </main>
 
     <script src="script.js"></script>
   </body>
